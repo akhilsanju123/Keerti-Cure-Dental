@@ -24,7 +24,7 @@ import {
 import { heroImage, type Go } from "@/lib/constants";
 import { Cta } from "@/components/Layout";
 import { CmdMessage } from "@/components/CmdMessage";
-import { doctorPhoto } from "@/lib/sitePhotos";
+const doctorPhoto = "/images/slides/WhatsApp Image 2026-11-03 at 6.46.01 PM.jpeg";
 
 /* =========================================================
    KEERTI CURE DENTAL — ABOUT US
@@ -434,6 +434,19 @@ const styles = `
 .kc-hero-scroll svg {
   animation: kcBounce 2s ease-in-out infinite;
 }
+
+
+/* CLINIC MILESTONES — reference-inspired four-column section */
+.kc-stats { position:relative; padding:74px 0 80px; background:linear-gradient(180deg,#ffffff 0%,#f8fcfb 100%); border-bottom:1px solid var(--kc-border); }
+.kc-stats-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; }
+.kc-stat { position:relative; text-align:center; padding:24px 12px 27px; border-radius:18px; transition:transform .45s var(--kc-ease),background .4s,box-shadow .4s; }
+.kc-stat:not(:last-child)::after { content:""; position:absolute; right:-6px; top:24%; height:52%; width:1px; background:#e0ece8; }
+.kc-stat:hover { transform:translateY(-9px); background:#fff; box-shadow:0 18px 42px rgba(5,65,70,.09); }
+.kc-stat-number { display:block; font-family:"Manrope",sans-serif; font-weight:800; font-size:clamp(40px,5vw,68px); line-height:1.15; letter-spacing:-.065em; color:var(--kc-dark); font-variant-numeric:tabular-nums; transition:color .3s; }
+.kc-stat:hover .kc-stat-number { color:var(--kc-primary); }
+.kc-stat-label { display:block; margin-top:15px; font-size:clamp(12px,1.25vw,16px); font-weight:700; line-height:1.5; color:#40565c; }
+@media(max-width:700px) { .kc-stats { padding:42px 0 48px; } .kc-stats-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; } .kc-stat { padding:22px 8px; } .kc-stat:nth-child(2)::after { display:none; } .kc-stat-number { font-size:clamp(38px,9vw,55px); } }
+@media(max-width:380px) { .kc-stat-label { font-size:12px; } }
 
 /* OUR STORY */
 
@@ -906,6 +919,35 @@ const styles = `
   box-shadow: 0 12px 28px rgba(5,65,70,.07);
 }
 
+
+/* Leadership — six benefits surrounding a circular portrait */
+.kc-leadership-showcase { background:linear-gradient(155deg,#f4fbf8 0%,#eaf7f3 55%,#ffffff 100%); }
+.kc-leadership-showcase .kc-leadership-intro { margin-bottom:55px; }
+.kc-leader-feature-layout { display:grid; grid-template-columns:minmax(0,1fr) minmax(290px,1.08fr) minmax(0,1fr); gap:clamp(18px,2.8vw,48px); align-items:center; }
+.kc-leader-features { display:flex; flex-direction:column; justify-content:space-between; gap:clamp(35px,5vw,80px); }
+.kc-leader-feature { display:flex; align-items:center; gap:16px; padding:12px 0; border-radius:14px; transition:transform .4s var(--kc-ease),background .3s; }
+.kc-leader-feature:hover { transform:translateY(-5px); background:rgba(255,255,255,.72); }
+.kc-leader-feature svg { flex:0 0 auto; color:#087f83; transition:transform .4s var(--kc-ease),color .3s; }
+.kc-leader-feature:hover svg { transform:scale(1.13) rotate(-6deg); color:var(--kc-primary); }
+.kc-leader-features-left .kc-leader-feature { text-align:right; justify-content:flex-end; }
+.kc-leader-features-right .kc-leader-feature { text-align:left; justify-content:flex-start; }
+.kc-leader-feature-copy h3 { margin:0 0 9px; font-size:clamp(16px,1.55vw,22px); letter-spacing:-.035em; color:#052d37; line-height:1.3; }
+.kc-leader-feature-copy p { margin:0; font-size:clamp(12px,1vw,14px); line-height:1.65; color:#61777c; }
+.kc-leader-center { text-align:center; min-width:0; }
+.kc-leader-portrait { position:relative; width:100%; aspect-ratio:1/1.13; border-radius:48% 48% 46% 46% / 44% 44% 52% 52%; overflow:hidden; background:#d9f1e9; box-shadow:0 22px 50px rgba(5,65,70,.13); }
+.kc-leader-portrait::after { content:""; position:absolute; inset:0; border:2px solid rgba(8,127,131,.13); border-radius:inherit; pointer-events:none; }
+.kc-leader-portrait img { width:100%; height:100%; object-fit:cover; object-position:center top; transition:transform .8s var(--kc-ease); }
+.kc-leader-portrait:hover img { transform:scale(1.065); }
+.kc-leader-portrait-fallback { height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; color:#087f83; padding:24px; }
+.kc-leader-identity { margin-top:21px; }
+.kc-leader-identity h3 { font-size:clamp(17px,1.7vw,24px); margin:0 0 6px; color:#052d37; }
+.kc-leader-identity p { margin:0; font-size:13px; color:#61777c; }
+.kc-leader-footer { max-width:720px; text-align:center; margin:48px auto 0; }
+.kc-leader-footer p { color:#526f72; font-style:italic; margin-bottom:23px; }
+@media(max-width:1050px) { .kc-leader-feature-layout { grid-template-columns:minmax(0,1fr) minmax(230px,1fr) minmax(0,1fr); gap:16px; } .kc-leader-feature { gap:10px; } .kc-leader-feature svg { width:29px; height:29px; } }
+@media(max-width:760px) { .kc-leader-feature-layout { grid-template-columns:1fr 1fr; gap:26px 18px; } .kc-leader-center { grid-column:1/-1; grid-row:1; max-width:390px; width:100%; margin:0 auto 10px; } .kc-leader-features { gap:18px; justify-content:flex-start; } .kc-leader-features-left .kc-leader-feature,.kc-leader-features-right .kc-leader-feature { flex-direction:column; text-align:center; justify-content:flex-start; padding:16px 8px; } .kc-leader-features-left .kc-leader-feature svg { order:-1; } .kc-leader-feature-copy h3 { font-size:16px; } .kc-leader-feature-copy p { font-size:12px; } }
+@media(max-width:480px) { .kc-leader-feature-layout { grid-template-columns:1fr; gap:18px; } .kc-leader-center { grid-column:1; } .kc-leader-features { gap:8px; } .kc-leader-features-left .kc-leader-feature,.kc-leader-features-right .kc-leader-feature { flex-direction:row; text-align:left; padding:14px 8px; gap:16px; } .kc-leader-features-left .kc-leader-feature svg { order:0; } .kc-leader-features-left .kc-leader-feature-copy { order:1; } .kc-leader-feature svg { width:32px; height:32px; } .kc-leader-footer { margin-top:28px; } }
+
 /* MISSION AND VISION */
 
 .kc-mission {
@@ -1376,11 +1418,120 @@ const styles = `
     transform: none;
   }
 }
+
+/* =========================================================
+   LEADERSHIP — KEERTI CURE DENTAL BRAND PALETTE
+   Scoped to leadership showcase; other sections unchanged.
+========================================================= */
+.kc-about .kc-leadership-showcase {
+  background: linear-gradient(145deg, #ffffff 0%, #f0faf6 48%, #e7f5f0 100%);
+  border-top: 1px solid #dfebe7;
+  border-bottom: 1px solid #dfebe7;
+}
+.kc-about .kc-leadership-showcase .kc-eyebrow { color: #087f83; }
+.kc-about .kc-leadership-showcase .kc-heading { color: #052d37; }
+.kc-about .kc-leadership-showcase .kc-heading em {
+  color: #087f83;
+  background: linear-gradient(105deg, #05646a 0%, #087f83 55%, #0a9b91 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.kc-about .kc-leadership-showcase .kc-leadership-intro p { color: #61777c; }
+.kc-about .kc-leadership-showcase .kc-leader-feature {
+  padding: 16px 12px;
+  border: 1px solid transparent;
+  transition: transform .4s var(--kc-ease), background .35s, border-color .35s, box-shadow .35s;
+}
+.kc-about .kc-leadership-showcase .kc-leader-feature:hover {
+  background: rgba(255,255,255,.9);
+  border-color: #cce8df;
+  box-shadow: 0 14px 34px rgba(5,65,70,.09);
+}
+.kc-about .kc-leadership-showcase .kc-leader-feature-copy h3 { color: #052d37; }
+.kc-about .kc-leadership-showcase .kc-leader-feature-copy p { color: #61777c; }
+.kc-about .kc-leadership-showcase .kc-leader-feature svg { color: #087f83; }
+.kc-about .kc-leadership-showcase .kc-leader-feature:hover svg { color: #05646a; }
+.kc-about .kc-leadership-showcase .kc-leader-portrait {
+  background: linear-gradient(150deg, #d9f1e9, #b9f1df);
+  box-shadow: 0 24px 55px rgba(5,65,70,.16);
+}
+.kc-about .kc-leadership-showcase .kc-leader-portrait::after { border-color: rgba(8,127,131,.25); }
+.kc-about .kc-leadership-showcase .kc-leader-identity h3 { color: #052d37; }
+.kc-about .kc-leadership-showcase .kc-leader-identity p,
+.kc-about .kc-leadership-showcase .kc-leader-footer p { color: #61777c; }
+@media (prefers-reduced-motion: reduce) {
+  .kc-about .kc-leadership-showcase .kc-leader-feature { transition: none; }
+}
 `;
 
 /* =========================================================
    ABOUT PAGE COMPONENT
 ========================================================= */
+
+
+/* Statistics count up once when the section enters the viewport. */
+function AboutStatistics() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const node = sectionRef.current;
+    if (!node) return;
+    let frame = 0;
+    let started = false;
+    const duration = 1650;
+    const animate = () => {
+      if (started) return;
+      started = true;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        setProgress(1);
+        return;
+      }
+      const start = performance.now();
+      const tick = (now: number) => {
+        const t = Math.min((now - start) / duration, 1);
+        setProgress(1 - Math.pow(1 - t, 3));
+        if (t < 1) frame = requestAnimationFrame(tick);
+      };
+      frame = requestAnimationFrame(tick);
+    };
+    if (typeof IntersectionObserver === 'undefined') {
+      animate();
+      return () => cancelAnimationFrame(frame);
+    }
+    const observer = new IntersectionObserver(entries => {
+      if (entries.some(entry => entry.isIntersecting)) {
+        animate();
+        observer.disconnect();
+      }
+    }, { threshold: 0.18 });
+    observer.observe(node);
+    return () => { observer.disconnect(); cancelAnimationFrame(frame); };
+  }, []);
+
+  const statistics = [
+    { value: 16, suffix: '+', label: 'Years of Dental Excellence' },
+    { value: 365, suffix: '', label: 'Days Open a Year' },
+    { value: 1, suffix: 'L+', label: 'Happy Smiles Treated' },
+    { value: 2, suffix: '', label: 'Prime Locations' },
+  ];
+
+  return (
+    <section className="kc-stats" ref={sectionRef} aria-label="Keerti Cure Dental in numbers">
+      <div className="kc-container kc-stats-grid">
+        {statistics.map(stat => (
+          <div className="kc-stat" key={stat.label}>
+            <span className="kc-stat-number">
+              {Math.round(stat.value * progress)}{stat.suffix}
+            </span>
+            <span className="kc-stat-label">{stat.label}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
 
 export function About({ go }: { go: Go }) {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -1502,6 +1653,9 @@ export function About({ go }: { go: Go }) {
             <ArrowDown size={17} />
           </button>
         </section>
+
+        {/* CLINIC STATISTICS — 16+ / 365 / 1L+ / 2 */}
+        <AboutStatistics />
 
         {/* OUR STORY — NEW IMAGE ADDED */}
 
@@ -1628,138 +1782,85 @@ export function About({ go }: { go: Go }) {
           </div>
         </section>
 
-        {/* LEADERSHIP — CMD */}
-
-        <section
-          className="kc-section kc-leadership"
-          aria-labelledby="kc-leadership-title"
-        >
+        {/* LEADERSHIP — REFERENCE INSPIRED CENTER PORTRAIT */}
+        <section className="kc-section kc-leadership kc-leadership-showcase" aria-labelledby="kc-leadership-title">
           <div className="kc-container">
             <div className="kc-leadership-intro kc-reveal">
-              <span className="kc-eyebrow">
-                OUR LEADERSHIP
-              </span>
-
-              <h2
-                className="kc-heading"
-                id="kc-leadership-title"
-              >
-                Chairman &amp;{" "}
-                <em>Managing Director (CMD)</em>
+              <span className="kc-eyebrow">OUR LEADERSHIP</span>
+              <h2 className="kc-heading" id="kc-leadership-title">
+                Guided by <em>Experience &amp; Compassion.</em>
               </h2>
-
-              <p>
-                Meet the leadership behind our commitment
-                to thoughtful, patient-focused dental care.
-              </p>
+              <p>Meet Dr. Sandeep Kokkeragadda, MDS — Chairman &amp; Managing Director of Keerti Cure Dental.</p>
             </div>
 
-            <div className="kc-leadership-panel">
-              <div className="kc-doctor-image kc-leadership-photo kc-reveal">
-                {!doctorImageError ? (
-                  <img
-                    src={doctorPhoto}
-                    alt="Dr. Sandeep Kokkeragadda, MDS"
-                    loading="lazy"
-                    onError={() => setDoctorImageError(true)}
-                  />
-                ) : (
-                  <div className="kc-doctor-placeholder">
-                    <Stethoscope
-                      size={80}
-                      strokeWidth={1.3}
-                    />
-                    <strong>
-                      Dr. Sandeep Kokkeragadda, MDS
-                    </strong>
-                    <span>
-                      Doctor photograph is currently
-                      unavailable.
-                    </span>
+            <div className="kc-leader-feature-layout">
+              <div className="kc-leader-features kc-leader-features-left">
+                <article className="kc-leader-feature kc-reveal">
+                  <div className="kc-leader-feature-copy">
+                    <h3>Led by Dr. Sandeep Kokkeragadda</h3>
+                    <p>Leadership focused on thoughtful, patient-centred dental care.</p>
                   </div>
-                )}
+                  <Award size={39} strokeWidth={1.5} aria-hidden="true" />
+                </article>
+                <article className="kc-leader-feature kc-reveal" style={stagger(1)}>
+                  <div className="kc-leader-feature-copy">
+                    <h3>Personalised Consultations</h3>
+                    <p>Care discussions shaped around your individual needs and concerns.</p>
+                  </div>
+                  <HeartHandshake size={39} strokeWidth={1.5} aria-hidden="true" />
+                </article>
+                <article className="kc-leader-feature kc-reveal" style={stagger(2)}>
+                  <div className="kc-leader-feature-copy">
+                    <h3>Clear Treatment Guidance</h3>
+                    <p>Understand your dental care options before making decisions.</p>
+                  </div>
+                  <MessageCircle size={39} strokeWidth={1.5} aria-hidden="true" />
+                </article>
+              </div>
 
-                <div className="kc-doctor-photo-label">
-                  <h3>
-                    Dr. Sandeep Kokkeragadda, MDS
-                  </h3>
-                  <p>
-                    Chairman &amp; Managing Director
-                  </p>
+              <div className="kc-leader-center kc-reveal">
+                <div className="kc-leader-portrait">
+                  {!doctorImageError ? (
+                    <img src={doctorPhoto} alt="Dr. Sandeep Kokkeragadda, MDS" loading="lazy" onError={() => setDoctorImageError(true)} />
+                  ) : (
+                    <div className="kc-leader-portrait-fallback"><Stethoscope size={76} strokeWidth={1.2} /><span>Dr. Sandeep Kokkeragadda, MDS</span></div>
+                  )}
+                </div>
+                <div className="kc-leader-identity">
+                  <h3>Dr. Sandeep Kokkeragadda, MDS</h3>
+                  <p>Chairman &amp; Managing Director (CMD)</p>
                 </div>
               </div>
 
-              <div className="kc-doctor-copy kc-leadership-copy kc-reveal">
-                <div className="kc-doctor-role">
-                  <Award size={18} />
-                  CHAIRMAN &amp; MANAGING DIRECTOR
-                </div>
-
-                <h3 className="kc-leadership-name">
-                  Dr. Sandeep{" "}
-                  <em>Kokkeragadda</em>
-                </h3>
-
-                <div className="kc-leadership-degree">
-                  MDS
-                </div>
-
-                <div className="kc-story-line" />
-
-                <p>
-                  At Keerti Cure Dental, our approach to
-                  dentistry is built around understanding
-                  each patient as an individual. Under
-                  the leadership of Dr. Sandeep
-                  Kokkeragadda, our focus is on respectful
-                  communication, patient comfort and
-                  informed decisions about oral health.
-                </p>
-
-                <p>
-                  We believe that a good dental experience
-                  begins with listening. From the first
-                  consultation to guidance after treatment,
-                  our goal is to help patients understand
-                  their options and feel supported
-                  throughout their care journey.
-                </p>
-
-                <div className="kc-leadership-highlights">
-                  <div className="kc-leadership-highlight">
-                    <HeartHandshake size={21} />
-                    <span>Patient-first approach</span>
+              <div className="kc-leader-features kc-leader-features-right">
+                <article className="kc-leader-feature kc-reveal">
+                  <ShieldCheck size={39} strokeWidth={1.5} aria-hidden="true" />
+                  <div className="kc-leader-feature-copy">
+                    <h3>Thoughtful Dental Care</h3>
+                    <p>An approach built on careful attention and informed choices.</p>
                   </div>
-
-                  <div className="kc-leadership-highlight">
-                    <MessageCircle size={21} />
-                    <span>Clear communication</span>
+                </article>
+                <article className="kc-leader-feature kc-reveal" style={stagger(1)}>
+                  <HeartPulse size={39} strokeWidth={1.5} aria-hidden="true" />
+                  <div className="kc-leader-feature-copy">
+                    <h3>Comfort Comes First</h3>
+                    <p>Respectful communication to help patients feel supported.</p>
                   </div>
-
-                  <div className="kc-leadership-highlight">
-                    <ShieldCheck size={21} />
-                    <span>Thoughtful dental care</span>
+                </article>
+                <article className="kc-leader-feature kc-reveal" style={stagger(2)}>
+                  <Smile size={39} strokeWidth={1.5} aria-hidden="true" />
+                  <div className="kc-leader-feature-copy">
+                    <h3>Confidence in Every Smile</h3>
+                    <p>Practical guidance for better oral health and everyday care.</p>
                   </div>
-                </div>
-
-                <div className="kc-doctor-quote kc-leadership-quote">
-                  <Quote size={26} />
-                  <p>
-                    Our philosophy is simple: listen
-                    carefully, explain clearly and make
-                    every patient feel valued.
-                  </p>
-                </div>
-
-                <button
-                  type="button"
-                  className="kc-button"
-                  onClick={() => go("/contact")}
-                >
-                  <span>Book a Consultation</span>
-                  <ArrowUpRight size={18} />
-                </button>
+                </article>
               </div>
+            </div>
+            <div className="kc-leader-footer kc-reveal">
+              <p>“Our philosophy is simple: listen carefully, explain clearly and make every patient feel valued.”</p>
+              <button type="button" className="kc-button" onClick={() => go("/contact")}>
+                <span>Book a Consultation</span><ArrowUpRight size={18} />
+              </button>
             </div>
           </div>
         </section>
