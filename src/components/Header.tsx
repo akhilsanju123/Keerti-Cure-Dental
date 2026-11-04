@@ -14,6 +14,7 @@ import {
   HeartPulse,
   CalendarDays,
   Sparkles,
+  Star,
 } from "lucide-react";
 
 import {
@@ -68,6 +69,7 @@ export function Header({
     };
 
     window.addEventListener("popstate", updatePath);
+
     return () =>
       window.removeEventListener("popstate", updatePath);
   }, []);
@@ -82,6 +84,7 @@ export function Header({
       if (event.key === "Escape") {
         setMenuOpen(false);
         setDropdownOpen(false);
+        setServicesOpen(false);
       }
     };
 
@@ -97,11 +100,46 @@ export function Header({
     setCurrentPath(path);
     setMenuOpen(false);
     setDropdownOpen(false);
+    setServicesOpen(false);
     go(path);
+  };
+
+  const scrollToReviews = () => {
+    setMenuOpen(false);
+    setDropdownOpen(false);
+    setServicesOpen(false);
+
+    const findReviews = (attempt = 0) => {
+      const section = document.getElementById("reviews");
+
+      if (section) {
+        section.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+        return;
+      }
+
+      if (attempt < 50) {
+        window.setTimeout(
+          () => findReviews(attempt + 1),
+          100
+        );
+      }
+    };
+
+    if (window.location.pathname !== "/") {
+      setCurrentPath("/");
+      go("/");
+      window.setTimeout(() => findReviews(), 100);
+    } else {
+      findReviews();
+    }
   };
 
   const isActive = (path: string) => {
     if (path === "/") return currentPath === "/";
+
     return (
       currentPath === path ||
       currentPath.startsWith(`${path}/`)
@@ -125,7 +163,9 @@ export function Header({
           <div className="kc-h-topbar-left">
             <a href={phoneLink}>
               <Phone size={14} />
-              <span>Call Us: <strong>{phone}</strong></span>
+              <span>
+                Call Us: <strong>{phone}</strong>
+              </span>
             </a>
 
             <span className="kc-h-top-divider" />
@@ -176,7 +216,6 @@ export function Header({
         }`}
       >
         <div className="kc-h-container kc-h-navbar">
-
           {/* LOGO */}
           <button
             type="button"
@@ -227,6 +266,7 @@ export function Header({
                   <span className="kc-h-dropdown-icon">
                     <Sparkles size={19} />
                   </span>
+
                   <div>
                     <strong>Explore Our Treatments</strong>
                     <p>Personalized care for every smile</p>
@@ -280,6 +320,7 @@ export function Header({
                   <span className="kc-h-dropdown-icon">
                     <Sparkles size={19} />
                   </span>
+
                   <div>
                     <strong>Our Services</strong>
                     <p>Explore what we offer</p>
@@ -292,7 +333,9 @@ export function Header({
                       key={service.slug}
                       type="button"
                       onClick={() =>
-                        navigate(`/our-services/${service.slug}`)
+                        navigate(
+                          `/our-services/${service.slug}`
+                        )
                       }
                     >
                       <span>{service.name}</span>
@@ -326,16 +369,30 @@ export function Header({
             ))}
           </nav>
 
-          {/* DESKTOP APPOINTMENT */}
-          <button
-            type="button"
-            className="kc-h-book-btn"
-            onClick={() => navigate("/book-appointment")}
-          >
-            <CalendarDays size={17} />
-            <span>Book Appointment</span>
-            <ArrowUpRight size={16} />
-          </button>
+          {/* DESKTOP ACTION BUTTONS */}
+          <div className="kc-h-header-actions">
+            {/* REVIEWS BUTTON */}
+            <button
+              type="button"
+              className="kc-h-reviews-btn"
+              onClick={scrollToReviews}
+              aria-label="View patient reviews"
+            >
+              <Star size={17} />
+              <span>Reviews</span>
+            </button>
+
+            {/* BOOK APPOINTMENT BUTTON */}
+            <button
+              type="button"
+              className="kc-h-book-btn"
+              onClick={() => navigate("/book-appointment")}
+            >
+              <CalendarDays size={17} />
+              <span>Book Appointment</span>
+              <ArrowUpRight size={16} />
+            </button>
+          </div>
 
           {/* MOBILE MENU TOGGLE */}
           <button
@@ -396,47 +453,6 @@ export function Header({
             </button>
           ))}
 
-          {/* MOBILE OUR SERVICES */}
-          <div className="kc-h-mobile-dropdown">
-            <button
-              type="button"
-              className={`kc-h-mobile-dropdown-toggle ${
-                isActive("/our-services") ? "active" : ""
-              }`}
-              onClick={() => setServicesOpen(!servicesOpen)}
-              aria-expanded={servicesOpen}
-            >
-              Our Services
-              <ChevronDown
-                size={17}
-                className={servicesOpen ? "rotate" : ""}
-              />
-            </button>
-
-            {servicesOpen && (
-              <div className="kc-h-mobile-submenu">
-                <button
-                  type="button"
-                  onClick={() => navigate("/our-services")}
-                >
-                  All Services
-                </button>
-
-                {services.map((service) => (
-                  <button
-                    key={service.slug}
-                    type="button"
-                    onClick={() =>
-                      navigate(`/our-services/${service.slug}`)
-                    }
-                  >
-                    {service.name}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-
           {/* MOBILE TREATMENTS */}
           <div className="kc-h-mobile-dropdown">
             <button
@@ -478,6 +494,49 @@ export function Header({
             )}
           </div>
 
+          {/* MOBILE OUR SERVICES */}
+          <div className="kc-h-mobile-dropdown">
+            <button
+              type="button"
+              className={`kc-h-mobile-dropdown-toggle ${
+                isActive("/our-services") ? "active" : ""
+              }`}
+              onClick={() => setServicesOpen(!servicesOpen)}
+              aria-expanded={servicesOpen}
+            >
+              Our Services
+              <ChevronDown
+                size={17}
+                className={servicesOpen ? "rotate" : ""}
+              />
+            </button>
+
+            {servicesOpen && (
+              <div className="kc-h-mobile-submenu">
+                <button
+                  type="button"
+                  onClick={() => navigate("/our-services")}
+                >
+                  All Services
+                </button>
+
+                {services.map((service) => (
+                  <button
+                    key={service.slug}
+                    type="button"
+                    onClick={() =>
+                      navigate(
+                        `/our-services/${service.slug}`
+                      )
+                    }
+                  >
+                    {service.name}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
           {navItems.slice(2).map((item) => (
             <button
               key={item.path}
@@ -489,6 +548,19 @@ export function Header({
               <ChevronRight size={17} />
             </button>
           ))}
+
+          {/* MOBILE REVIEWS */}
+          <button
+            type="button"
+            className="kc-h-mobile-reviews-link"
+            onClick={scrollToReviews}
+          >
+            <span className="kc-h-mobile-review-label">
+              <Star size={17} />
+              Reviews
+            </span>
+            <ChevronRight size={17} />
+          </button>
         </div>
 
         <div className="kc-h-mobile-bottom">
@@ -516,6 +588,7 @@ export function Header({
             >
               <Instagram size={18} />
             </a>
+
             <a
               href={facebook}
               target="_blank"
@@ -530,8 +603,6 @@ export function Header({
 
       {/* COMPONENT STYLES */}
       <style>{`
-        /* GLOBAL HEADER VARIABLES */
-
         .kc-h-topbar,
         .kc-h-header,
         .kc-h-mobile-nav {
@@ -549,12 +620,11 @@ export function Header({
         }
 
         .kc-h-container {
-          width: min(94%, 1320px);
+          width: min(96%, 1440px);
           margin: 0 auto;
         }
 
         /* TOP BAR */
-
         .kc-h-topbar {
           background: #087f82;
           color: #ffffff;
@@ -614,7 +684,6 @@ export function Header({
         }
 
         /* MAIN HEADER */
-
         .kc-h-header {
           position: sticky;
           top: 0;
@@ -634,11 +703,10 @@ export function Header({
           display: flex;
           align-items: center;
           justify-content: space-between;
-          gap: 24px;
+          gap: 16px;
         }
 
         /* LOGO */
-
         .kc-h-logo {
           flex-shrink: 0;
           background: transparent;
@@ -651,7 +719,7 @@ export function Header({
 
         .kc-h-logo img {
           width: auto;
-          max-width: 180px;
+          max-width: 165px;
           max-height: 66px;
           object-fit: contain;
           transition: transform 0.3s ease;
@@ -662,13 +730,13 @@ export function Header({
         }
 
         /* DESKTOP NAV */
-
         .kc-h-desktop-nav {
           display: flex;
           align-items: center;
           justify-content: center;
-          gap: clamp(13px, 1.6vw, 27px);
+          gap: clamp(10px, 1.15vw, 20px);
           flex: 1;
+          min-width: 0;
         }
 
         .kc-h-nav-link {
@@ -680,7 +748,7 @@ export function Header({
           border: none;
           background: none;
           color: #233e4b;
-          font-size: 13px;
+          font-size: 12.5px;
           font-weight: 600;
           cursor: pointer;
           white-space: nowrap;
@@ -710,7 +778,6 @@ export function Header({
         }
 
         /* DESKTOP DROPDOWN */
-
         .kc-h-dropdown {
           position: relative;
         }
@@ -833,14 +900,59 @@ export function Header({
           cursor: pointer;
         }
 
-        /* BOOK APPOINTMENT */
+        /* DESKTOP ACTION BUTTONS */
+        .kc-h-header-actions {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          flex-shrink: 0;
+        }
 
+        /* REVIEWS BUTTON */
+        .kc-h-reviews-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          padding: 13px 15px;
+          border: 1px solid #087f82;
+          border-radius: 9px;
+          background: #ffffff;
+          color: #087f82;
+          font-size: 12px;
+          font-weight: 700;
+          white-space: nowrap;
+          cursor: pointer;
+          transition:
+            background 0.3s ease,
+            color 0.3s ease,
+            transform 0.3s ease,
+            box-shadow 0.3s ease;
+        }
+
+        .kc-h-reviews-btn svg {
+          fill: none;
+          transition: fill 0.3s ease;
+        }
+
+        .kc-h-reviews-btn:hover {
+          background: #087f82;
+          color: #ffffff;
+          transform: translateY(-2px);
+          box-shadow: 0 7px 20px rgba(8,127,130,0.2);
+        }
+
+        .kc-h-reviews-btn:hover svg {
+          fill: currentColor;
+        }
+
+        /* BOOK APPOINTMENT */
         .kc-h-book-btn {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          gap: 9px;
-          padding: 14px 18px;
+          gap: 8px;
+          padding: 14px 15px;
           border: none;
           border-radius: 9px;
           background: linear-gradient(
@@ -876,7 +988,6 @@ export function Header({
         }
 
         /* MOBILE OVERLAY */
-
         .kc-h-overlay {
           position: fixed;
           inset: 0;
@@ -896,7 +1007,6 @@ export function Header({
         }
 
         /* MOBILE DRAWER */
-
         .kc-h-mobile-nav {
           position: fixed;
           top: 0;
@@ -909,7 +1019,9 @@ export function Header({
           flex-direction: column;
           transform: translateX(105%);
           visibility: hidden;
-          transition: transform 0.35s ease, visibility 0.35s;
+          transition:
+            transform 0.35s ease,
+            visibility 0.35s;
           box-shadow: -15px 0 50px rgba(0,0,0,0.13);
         }
 
@@ -1007,6 +1119,21 @@ export function Header({
           color: #087f82;
         }
 
+        /* MOBILE REVIEWS */
+        .kc-h-mobile-review-label {
+          display: inline-flex;
+          align-items: center;
+          gap: 9px;
+        }
+
+        .kc-h-mobile-reviews-link {
+          color: #087f82 !important;
+        }
+
+        .kc-h-mobile-reviews-link:hover {
+          background: #eff9f7;
+        }
+
         .kc-h-mobile-bottom {
           padding: 22px 24px;
           border-top: 1px solid #e7eeee;
@@ -1057,28 +1184,33 @@ export function Header({
         }
 
         /* RESPONSIVE */
-
-        @media (max-width: 1180px) {
+        @media (max-width: 1380px) {
           .kc-h-navbar {
-            gap: 14px;
+            gap: 11px;
           }
 
           .kc-h-desktop-nav {
-            gap: 13px;
+            gap: 10px;
           }
 
           .kc-h-logo img {
-            max-width: 155px;
+            max-width: 145px;
           }
 
           .kc-h-nav-link {
-            font-size: 12px;
+            font-size: 11.5px;
+          }
+
+          .kc-h-book-btn,
+          .kc-h-reviews-btn {
+            padding: 12px 11px;
+            font-size: 11px;
           }
         }
 
-        @media (max-width: 1050px) {
+        @media (max-width: 1150px) {
           .kc-h-desktop-nav,
-          .kc-h-book-btn {
+          .kc-h-header-actions {
             display: none;
           }
 
@@ -1126,6 +1258,17 @@ export function Header({
           .kc-h-menu-toggle {
             width: 40px;
             height: 40px;
+          }
+        }
+
+        /* REVIEWS SECTION SCROLL OFFSET */
+        #reviews {
+          scroll-margin-top: 110px;
+        }
+
+        @media (max-width: 650px) {
+          #reviews {
+            scroll-margin-top: 85px;
           }
         }
 

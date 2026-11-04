@@ -1369,13 +1369,43 @@ const treatmentImages = [
 
 // Custom images stored in public/images/slides/.
 // These apply to both the treatment cards and individual detail pages.
-const customTreatmentImages = [
-  { match: /smile\s*design/i, image: '/images/slides/Smiledesign.jpeg' },
-  { match: /root\s*canal/i, image: '/images/slides/RootCanalTreatment.jpeg' },
-  { match: /braces|orthodontic/i, image: '/images/slides/Braces&Orthodontics.jpeg' },
-  { match: /teeth\s*whiten/i, image: '/images/slides/TeethWhitening.jpeg' },
-  { match: /crowns?\s*(?:&|and)\s*bridges?/i, image: '/images/slides/Crowns&Bridges.jpeg' },
+
+const customTreatmentImages = [ 
+{
+  match: /general\s*dentistry/i,
+  image: '/images/slides/03.jpg.jpeg',
+},
+
+  {
+    match: /dental\s*implants?|implants?/i,
+    image: '/images/slides/1.jpg.jpeg',
+  },
+  {
+    match: /smile\s*design/i,
+    image: '/images/slides/1 (6).jpg.jpeg',
+  },
+  {
+    match: /root\s*canal/i,
+    image: '/images/slides/02.jpg.jpeg',
+  },
+  {
+    match: /braces|orthodontic/i,
+    image: '/images/slides/4 (2).jpg.jpeg',
+  },
+  {
+    match: /teeth\s*whiten/i,
+    image: '/images/slides/4.jpg.jpeg',
+  },
+  {
+    match: /crowns?\s*(?:&|and)\s*bridges?/i,
+    image: '/images/slides/2.jpg.jpeg',
+  },
+  {
+  match: /clear\s*aligners?/i,
+  image: '/images/slides/1636976941859_002.jpg.jpeg',
+  }, 
 ];
+
 
 function treatmentImage(title: string, index: number): string {
   const custom = customTreatmentImages.find(({ match }) => match.test(title));

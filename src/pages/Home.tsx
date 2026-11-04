@@ -1791,7 +1791,12 @@ const styles = `
 
 /* TESTIMONIALS */
 
+@media (max-width: 650px) {
+  #reviews { scroll-margin-top: 85px; }
+}
+
 .kd-testimonials {
+  scroll-margin-top: 110px;
   background: var(--kd-soft);
   overflow: hidden;
 }
@@ -2893,7 +2898,7 @@ export function Home({ go }: { go: Go }) {
 
       {/* TESTIMONIALS */}
 
-      <section className="kd-section kd-testimonials">
+      <section id="reviews" className="kd-section kd-testimonials">
         <div className="kd-container">
           <div className="kd-section-top kd-reveal">
             <div>

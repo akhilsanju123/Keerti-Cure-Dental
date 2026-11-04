@@ -7,7 +7,7 @@ import { services } from '@/services';
 // Files must be inside public/images/slides/.
 const serviceImageOverrides: Record<string, string> = {
   'cosmetic dentistry': '/images/slides/5_(2).jpg.jpeg',
-  'orthodontics': '/images/slides/5_(3).jpg.jpeg',
+  'orthodontics': '/images/slides/4 (2).jpg.jpeg',
   'dental implants': '/images/slides/Crowns&Bridges.jpeg',
   'dental veneers': '/images/slides/TeethWhitening.jpeg',
 };
