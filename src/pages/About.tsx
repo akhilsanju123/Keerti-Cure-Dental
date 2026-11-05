@@ -438,14 +438,14 @@ const styles = `
 
 /* CLINIC MILESTONES — reference-inspired four-column section */
 .kc-stats { position:relative; padding:74px 0 80px; background:linear-gradient(180deg,#ffffff 0%,#f8fcfb 100%); border-bottom:1px solid var(--kc-border); }
-.kc-stats-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; }
+.kc-stats-grid { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:12px; }
 .kc-stat { position:relative; text-align:center; padding:24px 12px 27px; border-radius:18px; transition:transform .45s var(--kc-ease),background .4s,box-shadow .4s; }
 .kc-stat:not(:last-child)::after { content:""; position:absolute; right:-6px; top:24%; height:52%; width:1px; background:#e0ece8; }
 .kc-stat:hover { transform:translateY(-9px); background:#fff; box-shadow:0 18px 42px rgba(5,65,70,.09); }
 .kc-stat-number { display:block; font-family:"Manrope",sans-serif; font-weight:800; font-size:clamp(40px,5vw,68px); line-height:1.15; letter-spacing:-.065em; color:var(--kc-dark); font-variant-numeric:tabular-nums; transition:color .3s; }
 .kc-stat:hover .kc-stat-number { color:var(--kc-primary); }
 .kc-stat-label { display:block; margin-top:15px; font-size:clamp(12px,1.25vw,16px); font-weight:700; line-height:1.5; color:#40565c; }
-@media(max-width:700px) { .kc-stats { padding:42px 0 48px; } .kc-stats-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; } .kc-stat { padding:22px 8px; } .kc-stat:nth-child(2)::after { display:none; } .kc-stat-number { font-size:clamp(38px,9vw,55px); } }
+@media(max-width:700px) { .kc-stats { padding:42px 0 48px; } .kc-stats-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; } .kc-stat { padding:22px 8px; } .kc-stat:nth-child(2)::after, .kc-stat:nth-child(4)::after { display:none; } .kc-stat:last-child { grid-column:1/-1; } .kc-stat:last-child::after { display:none; } .kc-stat-number { font-size:clamp(38px,9vw,55px); } }
 @media(max-width:380px) { .kc-stat-label { font-size:12px; } }
 
 /* OUR STORY */
@@ -1515,6 +1515,7 @@ function AboutStatistics() {
     { value: 365, suffix: '', label: 'Days Open a Year' },
     { value: 1, suffix: 'L+', label: 'Happy Smiles Treated' },
     { value: 2, suffix: '', label: 'Prime Locations' },
+    { value: 0, suffix: '', label: 'Specialist', text: 'MDS' },
   ];
 
   return (
@@ -1523,7 +1524,7 @@ function AboutStatistics() {
         {statistics.map(stat => (
           <div className="kc-stat" key={stat.label}>
             <span className="kc-stat-number">
-              {Math.round(stat.value * progress)}{stat.suffix}
+              {'text' in stat ? stat.text : `${Math.round(stat.value * progress)}${stat.suffix}`}
             </span>
             <span className="kc-stat-label">{stat.label}</span>
           </div>
@@ -1654,7 +1655,7 @@ export function About({ go }: { go: Go }) {
           </button>
         </section>
 
-        {/* CLINIC STATISTICS — 16+ / 365 / 1L+ / 2 */}
+        {/* CLINIC STATISTICS — 16+ / 365 / 1L+ / 2 / MDS */}
         <AboutStatistics />
 
         {/* OUR STORY — NEW IMAGE ADDED */}

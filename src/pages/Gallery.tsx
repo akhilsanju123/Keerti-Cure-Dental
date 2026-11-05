@@ -4,7 +4,6 @@ import type { Go } from '@/lib/constants';
 import { PageHero } from '@/components/Layout';
 
 const galleryImageNames = [
-  
   '01 (1).jpg.jpeg',
   '001 (1).jpg.jpeg',
   '1 (2).jpg.jpeg',
@@ -17,23 +16,18 @@ const galleryImageNames = [
   '002 (2).jpg.jpeg',
   '2 (4).jpg.jpeg',
   '2 (5).jpg.jpeg',
-  
   '2.jpg.jpeg',
   '02.jpg.jpeg',
-  
   '3 (1).jpg.jpeg',
   '003 (2).jpg.jpeg',
   '3.jpg.jpeg',
   '03.jpg.jpeg',
-
   '4_(1).jpg.jpeg',
   '4_(2).jpg.jpeg',
   '4_(3).jpg.jpeg',
   '4.jpg.jpeg',
   '04.jpg.jpeg',
   '004.jpg.jpeg',
-  
-  
   '5_(2).jpg.jpeg',
   '5_(3).jpg.jpeg',
   '5_(4).jpg.jpeg',
@@ -44,36 +38,26 @@ const galleryImageNames = [
   '6 (3).jpg.jpeg',
   '6.jpg.jpeg',
   '7 (1).jpg.jpeg',
-  
   '7 (3).jpg.jpeg',
   '7 (4).jpg.jpeg',
   '7 (5).jpg.jpeg',
-  
   '8 (2).jpg.jpeg',
   '10.jpg.jpeg',
   '12 (1).jpg.jpeg',
   '12.jpg.jpeg',
   '13 (1).jpg.jpeg',
   '16.jpg.jpeg',
-  
-  
   '50.jpeg',
-  
   '66.jpeg',
-  
   '1636976941832_003.jpg.jpeg',
   '1636976941851_001.jpg.jpeg',
   '1636976941859_002.jpg.jpeg',
-  
   'Braces&Orthodontics.jpeg',
   'Crowns&Bridges.jpeg',
-  
   'image copy 3.png',
   'image copy 4.png',
   'image copy 5.png',
   'sir photo.jpeg',
-  
-  
   'WhatsApp_Image_2026-11-02_at_11.50.04_AM.jpeg',
   'WhatsApp_Image_2026-11-02_at_11.39.01_AM copy.jpeg',
   'WhatsApp_Image_2026-11-02_at_11.49.50_AM copy.jpeg',

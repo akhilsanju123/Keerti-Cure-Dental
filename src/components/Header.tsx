@@ -170,6 +170,11 @@ export function Header({
 
             <span className="kc-h-top-divider" />
 
+            <a href={phoneLink} className="kc-h-emergency" aria-label="Call for dental emergency">
+              <HeartPulse size={14} />
+              <span>Dental Emergency</span>
+            </a>
+
             <a
               href={maps}
               target="_blank"
@@ -668,6 +673,12 @@ export function Header({
           width: 1px;
           background: rgba(255,255,255,0.35);
         }
+
+        .kc-h-emergency {
+          font-weight: 700;
+          transition: opacity 0.25s ease;
+        }
+        .kc-h-emergency:hover { opacity: 0.85; }
 
         .kc-h-top-social {
           display: flex;

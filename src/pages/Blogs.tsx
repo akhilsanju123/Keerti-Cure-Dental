@@ -123,7 +123,7 @@ const articles: Article[] = [
     minutes: 7,
     excerpt:
       "Learn why root canal treatment may be recommended and what the procedure involves.",
-    image: "/images/slides/RootCanalTreatment.jpeg",
+    image: "/images/slides/02.jpg.jpeg",
     lead:
       "Root canal treatment is designed to manage infection or inflammation inside a tooth and, when possible, preserve the natural tooth.",
     sections: [

@@ -966,6 +966,28 @@ const styles = `
   animation: kdBounce 2s ease-in-out infinite;
 }
 
+
+/* INTRO SECTION DIRECTLY BELOW HERO SLIDES */
+.kd-location-intro {
+  padding: 85px 0 75px;
+  background: linear-gradient(135deg, #ffffff 0%, #effaf6 100%);
+  text-align: center;
+}
+.kd-location-intro-inner { max-width: 900px; margin: 0 auto; }
+.kd-location-intro h2 {
+  margin: 18px 0 20px;
+  font-size: clamp(36px, 5vw, 64px);
+  color: var(--kd-dark);
+  line-height: 1.15;
+}
+.kd-location-intro h2 em { color: var(--kd-primary); font-style: normal; }
+.kd-location-intro p { margin: 0 auto 10px; max-width: 650px; font-size: 16px; }
+.kd-location-intro .kd-location-specialties { font-weight: 600; color: var(--kd-dark); }
+@media (max-width: 650px) {
+  .kd-location-intro { padding: 60px 0 55px; }
+  .kd-location-intro p { font-size: 14px; }
+}
+
 /* TRUST STRIP */
 
 .kd-trust-strip {
@@ -2656,6 +2678,8 @@ export function Home({ go }: { go: Go }) {
         )}
       </section>
 
+      
+
       {/* TRUST STRIP */}
 
       <section className="kd-trust-strip">
@@ -2687,6 +2711,20 @@ export function Home({ go }: { go: Go }) {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* VISAKHAPATNAM DENTAL CLINIC INTRO */}
+      <section className="kd-location-intro" aria-labelledby="kd-location-heading">
+        <div className="kd-container kd-location-intro-inner kd-reveal">
+          <span className="kd-eyebrow">BEST DENTAL CLINIC IN VISAKHAPATNAM</span>
+          <h2 id="kd-location-heading">
+            Precision care for <em>your perfect smile.</em>
+          </h2>
+          <p>Expert dental care at <strong>Madhurawada, Vizag.</strong></p>
+          <p className="kd-location-specialties">
+            Specialists: implants, cosmetic dentistry — with a genuine smile.
+          </p>
         </div>
       </section>
 
@@ -2723,8 +2761,8 @@ export function Home({ go }: { go: Go }) {
             </span>
 
             <h2 className="kd-heading">
-              More than dentistry.
-              <em> A place to feel cared for.</em>
+              A clinic designed around
+              <em> your comfort.</em>
             </h2>
 
             <p>
