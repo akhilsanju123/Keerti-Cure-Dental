@@ -2,7 +2,6 @@
 import {
   useEffect,
   useRef,
-  useState,
   type CSSProperties,
 } from 'react';
 
@@ -24,14 +23,15 @@ import { phone, phoneLink } from '@/lib/constants';
 import type { Go } from '@/lib/constants';
 import { NotFound } from '@/pages/NotFound';
 import { getService, services } from '@/services';
+import { oralCavityTongue } from '@/services/oralCavityTongue';
 
-// Image overrides for the four requested services.
-// Files must be inside public/images/slides/.
+// Service image overrides
 const serviceImageOverrides: Record<string, string> = {
   'cosmetic dentistry': '/images/slides/5_(2).jpg.jpeg',
-  'orthodontics': '/images/slides/5_(3).jpg.jpeg',
+  'orthodontics': '/images/slides/4 (2).jpg.jpeg',
   'dental implants': '/images/slides/Crowns&Bridges.jpeg',
   'dental veneers': '/images/slides/TeethWhitening.jpeg',
+  'oral cavity & tongue': '/images/slides/oral-cavity-tongue.jpeg',
 };
 
 function serviceImage(name: string, fallback: string): string {
@@ -39,11 +39,6 @@ function serviceImage(name: string, fallback: string): string {
 }
 
 const serviceDetailStyles = `
-/* =========================================
-   KEERTI CURE DENTAL
-   PREMIUM SERVICE DETAIL DESIGN
-========================================= */
-
 .sd-page {
   --sd-primary: #087f83;
   --sd-dark: #073b43;
@@ -67,9 +62,7 @@ const serviceDetailStyles = `
   margin-inline: auto;
 }
 
-/* =========================================
-   REVEAL ANIMATIONS
-========================================= */
+/* SCROLL REVEAL */
 
 .sd-reveal {
   opacity: 0;
@@ -88,9 +81,7 @@ const serviceDetailStyles = `
 .sd-delay-2 { transition-delay: .22s; }
 .sd-delay-3 { transition-delay: .32s; }
 
-/* =========================================
-   HERO
-========================================= */
+/* HERO */
 
 .sd-hero {
   position: relative;
@@ -261,9 +252,7 @@ const serviceDetailStyles = `
   box-shadow: 0 12px 25px rgba(8,127,131,.1);
 }
 
-/* =========================================
-   IMAGE
-========================================= */
+/* IMAGE */
 
 .sd-image-wrap {
   position: relative;
@@ -387,9 +376,7 @@ const serviceDetailStyles = `
   50% { transform: translateY(-10px); }
 }
 
-/* =========================================
-   TRUST STRIP
-========================================= */
+/* TRUST STRIP */
 
 .sd-trust-strip {
   position: relative;
@@ -448,9 +435,7 @@ const serviceDetailStyles = `
   color: var(--sd-muted);
 }
 
-/* =========================================
-   EXPECTATIONS
-========================================= */
+/* EXPECTATIONS */
 
 .sd-section {
   padding: 110px 0;
@@ -550,9 +535,7 @@ const serviceDetailStyles = `
   color: var(--sd-primary);
 }
 
-/* =========================================
-   OTHER SERVICES
-========================================= */
+/* OTHER SERVICES */
 
 .sd-other {
   padding: 100px 0;
@@ -668,9 +651,7 @@ const serviceDetailStyles = `
   transform: translate(4px,-4px);
 }
 
-/* =========================================
-   RESPONSIVE
-========================================= */
+/* RESPONSIVE */
 
 @media (max-width: 1000px) {
   .sd-hero-grid {
@@ -798,9 +779,7 @@ const serviceDetailStyles = `
 }
 `;
 
-/* =========================================
-   SCROLL REVEAL HOOK
-========================================= */
+/* SCROLL REVEAL HOOK */
 
 function useScrollReveal(dependency?: string) {
   const rootRef = useRef<HTMLDivElement | null>(null);
@@ -844,9 +823,7 @@ function useScrollReveal(dependency?: string) {
   return rootRef;
 }
 
-/* =========================================
-   SERVICE DETAIL COMPONENT
-========================================= */
+/* SERVICE DETAIL COMPONENT */
 
 export function ServiceDetail({
   slug,
@@ -855,14 +832,15 @@ export function ServiceDetail({
   slug?: string;
   go: Go;
 }) {
-  const service = getService(slug);
+  // Fallback lets the new page open before services/index.ts is updated.
+  const service = slug === oralCavityTongue.slug ? oralCavityTongue : getService(slug);
   const revealRef = useScrollReveal(service?.slug);
 
   if (!service) {
     return <NotFound go={go} />;
   }
 
-  const otherServices = services.filter(
+  const otherServices = [...services.filter(item => item.slug !== oralCavityTongue.slug), oralCavityTongue].filter(
     item => item.slug !== service.slug
   );
 
@@ -875,12 +853,10 @@ export function ServiceDetail({
         ref={revealRef}
         key={service.slug}
       >
-
         {/* HERO SECTION */}
         <section className="sd-hero">
           <div className="sd-container sd-hero-grid">
 
-            {/* Left Content */}
             <div>
               <button
                 type="button"
@@ -929,9 +905,8 @@ export function ServiceDetail({
               </div>
             </div>
 
-            {/* Right Image */}
+            {/* SERVICE IMAGE */}
             <div className="sd-image-wrap sd-reveal sd-delay-2">
-
               <div className="sd-image-glow" />
 
               <div className="sd-image">
@@ -947,12 +922,8 @@ export function ServiceDetail({
                   </div>
 
                   <div>
-                    <strong>
-                      Your Smile Matters
-                    </strong>
-                    <small>
-                      Personalized Dental Care
-                    </small>
+                    <strong>Your Smile Matters</strong>
+                    <small>Personalized Dental Care</small>
                   </div>
                 </div>
               </div>
@@ -1100,13 +1071,11 @@ export function ServiceDetail({
                 </button>
               ))}
             </div>
-
           </div>
         </section>
 
-        {/* EXISTING CTA */}
+        {/* CTA */}
         <Cta go={go} />
-
       </div>
     </>
   );

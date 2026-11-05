@@ -2721,10 +2721,7 @@ export function Home({ go }: { go: Go }) {
           <h2 id="kd-location-heading">
             Precision care for <em>your perfect smile.</em>
           </h2>
-          <p>Expert dental care at <strong>Madhurawada, Vizag.</strong></p>
-          <p className="kd-location-specialties">
-            Specialists: implants, cosmetic dentistry — with a genuine smile.
-          </p>
+          <p>Expert dental care at <strong>Madhurawada, Vizag.</strong></p> 
         </div>
       </section>
 

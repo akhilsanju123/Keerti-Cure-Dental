@@ -61,6 +61,7 @@ const galleryImageNames = [
   'WhatsApp_Image_2026-11-02_at_11.50.04_AM.jpeg',
   'WhatsApp_Image_2026-11-02_at_11.39.01_AM copy.jpeg',
   'WhatsApp_Image_2026-11-02_at_11.49.50_AM copy.jpeg',
+  'img gallery.jpeg',
 ] as const;
 
 const galleryImages = galleryImageNames.map((name, index) => ({

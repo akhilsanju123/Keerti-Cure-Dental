@@ -7,6 +7,7 @@ import {
   ChevronRight,
   Facebook,
   Instagram,
+  Youtube,
   Menu,
   Phone,
   X,
@@ -41,6 +42,10 @@ export function Header({
   menuOpen,
   setMenuOpen,
 }: HeaderProps) {
+  const justdialUrl = "https://www.justdial.com/Visakhapatnam/Keerti-Cure-Dental-Dr-Sandeep-K-Near-Carshed-Junction-Signal-Point-Above-Dominos-Pizza-Pothimallayapalem/0891PX891-X891-211129141437-K6U6_BZDET";
+  // Replace with the clinic's exact YouTube channel URL when available.
+  const youtubeUrl = "https://www.youtube.com/results?search_query=Keerti+Cure+Dental";
+
   const [scrolled, setScrolled] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
@@ -209,6 +214,14 @@ export function Header({
               >
                 <Facebook size={16} />
               </a>
+
+              <a href={youtubeUrl} target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                <Youtube size={16} />
+              </a>
+
+              <a href={justdialUrl} target="_blank" rel="noopener noreferrer" aria-label="Justdial" title="Justdial">
+                <span className="kc-h-justdial-icon" aria-hidden="true">JD</span>
+              </a>
             </div>
           </div>
         </div>
@@ -347,6 +360,12 @@ export function Header({
                       <ChevronRight size={15} />
                     </button>
                   ))}
+                  {!services.some(service => service.slug === 'oral-cavity-tongue') && (
+                    <button type="button" onClick={() => navigate('/our-services/oral-cavity-tongue')}>
+                      <span>Oral Cavity &amp; Tongue</span>
+                      <ChevronRight size={15} />
+                    </button>
+                  )}
                 </div>
 
                 <button
@@ -538,6 +557,11 @@ export function Header({
                     {service.name}
                   </button>
                 ))}
+                {!services.some(service => service.slug === 'oral-cavity-tongue') && (
+                  <button type="button" onClick={() => navigate('/our-services/oral-cavity-tongue')}>
+                    Oral Cavity &amp; Tongue
+                  </button>
+                )}
               </div>
             )}
           </div>
@@ -601,6 +625,14 @@ export function Header({
               aria-label="Facebook"
             >
               <Facebook size={18} />
+            </a>
+
+            <a href={youtubeUrl} target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+              <Youtube size={18} />
+            </a>
+
+            <a href={justdialUrl} target="_blank" rel="noopener noreferrer" aria-label="Justdial" title="Justdial">
+              <span className="kc-h-justdial-icon" aria-hidden="true">JD</span>
             </a>
           </div>
         </div>
@@ -679,6 +711,20 @@ export function Header({
           transition: opacity 0.25s ease;
         }
         .kc-h-emergency:hover { opacity: 0.85; }
+
+        .kc-h-justdial-icon {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 20px;
+          height: 20px;
+          border: 1.5px solid currentColor;
+          border-radius: 5px;
+          font-size: 9px;
+          font-weight: 800;
+          letter-spacing: -0.5px;
+          line-height: 1;
+        }
 
         .kc-h-top-social {
           display: flex;
