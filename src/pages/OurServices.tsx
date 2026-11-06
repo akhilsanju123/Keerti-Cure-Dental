@@ -4,7 +4,11 @@ import type { Go } from '@/lib/constants';
 import { services } from '@/services';
 import { oralCavityTongue } from '@/services/oralCavityTongue';
 
-const allServices = [...services.filter(s => s.slug !== oralCavityTongue.slug), oralCavityTongue];
+// Show the additional service once, even if it is also in the main registry.
+const allServices = [
+  ...services.filter(service => service.slug !== oralCavityTongue.slug),
+  oralCavityTongue,
+];
 
 const serviceImageOverrides: Record<string, string> = {
   'cosmetic dentistry': '/images/slides/5_(2).jpg.jpeg',

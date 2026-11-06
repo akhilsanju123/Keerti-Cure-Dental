@@ -1,12 +1,14 @@
-// Shared service data for OurServices and ServiceDetail.
-export const oralCavityTongue = {
-  name: 'Oral Cavity & Tongue',
+import type { ServiceContent } from '@/services/types';
+
+export const oralCavityTongue: ServiceContent = {
   slug: 'oral-cavity-tongue',
-  description: 'Comprehensive oral cavity and tongue examinations to identify concerns and support long-term oral health.',
+  name: 'Oral Cavity & Tongue',
+  description:
+    'Comprehensive examination of the mouth, tongue and surrounding soft tissues to assess ulcers, lesions, discomfort and other oral health concerns. Your dentist will explain any findings and recommend appropriate care or further evaluation when needed.',
   image: '/images/slides/Oral and toung.jpeg',
   expectations: [
-    'A detailed examination of the tongue and oral cavity.',
-    'Assessment of symptoms, lesions, and other oral health concerns.',
-    'Clear guidance on findings and suitable next steps.',
+    'A careful examination of your tongue, cheeks, gums and other oral tissues',
+    'Assessment of persistent ulcers, unusual patches, swelling or discomfort',
+    'Clear guidance on treatment, follow-up or specialist referral when appropriate',
   ],
 };
