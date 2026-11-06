@@ -3,8 +3,10 @@ import {
   ArrowRight,
   Facebook,
   Instagram,
+  Linkedin,
   Youtube,
   Phone,
+  Mail,
   MapPin,
 } from "lucide-react";
 
@@ -22,6 +24,8 @@ import type { Go } from "@/lib/constants";
 
 export function Footer({ go }: { go: Go }) {
   const year = new Date().getFullYear();
+  const linkedinUrl = "https://www.linkedin.com/in/dr-sandeep-kokkeragadda-23b25211b/";
+  const justdialUrl = "https://www.justdial.com/Visakhapatnam/Keerti-Cure-Dental-Dr-Sandeep-K-Near-Carshed-Junction-Signal-Point-Above-Dominos-Pizza-Pothimallayapalem/0891PX891-X891-211129141437-K6U6_BZDET";
 
   const exploreLinks = [
     { title: "Home", path: "/" },
@@ -101,12 +105,31 @@ export function Footer({ go }: { go: Go }) {
                 </a>
 
                 <a
+                  href={linkedinUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Visit LinkedIn"
+                >
+                  <Linkedin size={18} />
+                </a>
+
+                <a
                   href="https://www.youtube.com/@KeertiCureDental"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Visit Keerti Cure Dental on YouTube"
                 >
                   <Youtube size={18} />
+                </a>
+
+                <a
+                  href={justdialUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Visit Justdial"
+                  title="Justdial"
+                >
+                  <span className="kc-premium-justdial-icon" aria-hidden="true">JD</span>
                 </a>
               </div>
             </div>
@@ -171,6 +194,13 @@ export function Footer({ go }: { go: Go }) {
                   <Phone size={17} />
                 </span>
                 <span>{phone}</span>
+              </a>
+
+              <a href="mailto:keerticuredental@gmail.com" aria-label="Email Keerti Cure Dental">
+                <span className="kc-premium-contact-icon">
+                  <Mail size={17} />
+                </span>
+                <span>keerticuredental@gmail.com</span>
               </a>
 
               <a
@@ -388,6 +418,20 @@ export function Footer({ go }: { go: Go }) {
           color: #ffffff;
           border-color: #087f82;
           transform: translateY(-4px);
+        }
+
+        .kc-premium-justdial-icon {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 22px;
+          height: 22px;
+          border: 1.5px solid currentColor;
+          border-radius: 5px;
+          font-size: 10px;
+          font-weight: 800;
+          letter-spacing: -0.5px;
+          line-height: 1;
         }
 
         /* COLUMNS */

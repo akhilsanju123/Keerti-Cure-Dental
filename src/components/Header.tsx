@@ -7,6 +7,7 @@ import {
   ChevronRight,
   Facebook,
   Instagram,
+  Linkedin,
   Youtube,
   Menu,
   Phone,
@@ -42,6 +43,7 @@ export function Header({
   menuOpen,
   setMenuOpen,
 }: HeaderProps) {
+  const linkedinUrl = "https://www.linkedin.com/in/dr-sandeep-kokkeragadda-23b25211b/";
   const justdialUrl = "https://www.justdial.com/Visakhapatnam/Keerti-Cure-Dental-Dr-Sandeep-K-Near-Carshed-Junction-Signal-Point-Above-Dominos-Pizza-Pothimallayapalem/0891PX891-X891-211129141437-K6U6_BZDET";
   // Replace with the clinic's exact YouTube channel URL when available.
   const youtubeUrl = "https://www.youtube.com/results?search_query=Keerti+Cure+Dental";
@@ -213,6 +215,10 @@ export function Header({
                 aria-label="Facebook"
               >
                 <Facebook size={16} />
+              </a>
+
+              <a href={linkedinUrl} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
+                <Linkedin size={16} />
               </a>
 
               <a href={youtubeUrl} target="_blank" rel="noopener noreferrer" aria-label="YouTube">
@@ -625,6 +631,10 @@ export function Header({
               aria-label="Facebook"
             >
               <Facebook size={18} />
+            </a>
+
+            <a href={linkedinUrl} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
+              <Linkedin size={18} />
             </a>
 
             <a href={youtubeUrl} target="_blank" rel="noopener noreferrer" aria-label="YouTube">

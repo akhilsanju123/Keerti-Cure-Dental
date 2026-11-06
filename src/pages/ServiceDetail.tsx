@@ -31,7 +31,7 @@ const serviceImageOverrides: Record<string, string> = {
   'orthodontics': '/images/slides/4 (2).jpg.jpeg',
   'dental implants': '/images/slides/Crowns&Bridges.jpeg',
   'dental veneers': '/images/slides/TeethWhitening.jpeg',
-  'oral cavity & tongue': '/images/slides/oral-cavity-tongue.jpeg',
+  'oral cavity & tongue': '/images/slides/Oral and toung.jpeg',
 };
 
 function serviceImage(name: string, fallback: string): string {

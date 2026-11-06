@@ -7,6 +7,7 @@ import {
   Instagram,
   Youtube,
   Phone,
+  Mail,
   MapPin,
   MessageCircle,
   Send,
@@ -507,7 +508,7 @@ const contactStyles = `
 }
 
 /* ============================================
-   SOCIAL MEDIA - INSTAGRAM, FACEBOOK, YOUTUBE
+   SOCIAL MEDIA
 ============================================ */
 
 .kc-social-section {
@@ -1145,6 +1146,8 @@ const contactImages = {
 const youtube =
   'https://www.youtube.com/@KeertiCureDental';
 
+const clinicEmail = 'keerticuredental@gmail.com';
+
 /* ============================================
    CONTACT PAGE
 ============================================ */
@@ -1405,6 +1408,30 @@ export function Contact({ go }: { go: Go }) {
                   />
                 </a>
 
+                {/* ==================================
+                    EMAIL - NEW CONTACT CARD
+                ================================== */}
+
+                <a
+                  className="kc-contact-card"
+                  href={`mailto:${clinicEmail}`}
+                  aria-label="Email Keerti Cure Dental"
+                >
+                  <span className="kc-contact-icon">
+                    <Mail size={24} />
+                  </span>
+
+                  <div className="kc-contact-card-copy">
+                    <small>EMAIL OUR CLINIC</small>
+                    <strong>{clinicEmail}</strong>
+                  </div>
+
+                  <ArrowUpRight
+                    size={20}
+                    className="kc-contact-arrow"
+                  />
+                </a>
+
                 {/* LOCATION */}
 
                 <a
@@ -1458,7 +1485,6 @@ export function Contact({ go }: { go: Go }) {
 
               {/* ==================================
                   SOCIAL LINKS
-                  INSTAGRAM + FACEBOOK + YOUTUBE
               ================================== */}
 
               <div className="kc-social-section">
@@ -1496,7 +1522,7 @@ export function Contact({ go }: { go: Go }) {
                     <ArrowUpRight size={15} />
                   </a>
 
-                  {/* YOUTUBE - NEW */}
+                  {/* YOUTUBE */}
 
                   <a
                     className="kc-social-link"
