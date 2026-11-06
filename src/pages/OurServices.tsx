@@ -4,8 +4,6 @@ import type { Go } from '@/lib/constants';
 import { services } from '@/services';
 import { oralCavityTongue } from '@/services/oralCavityTongue';
 
-// Add the new service even when it has not yet been registered in services/index.ts.
-// Avoid duplicate cards if it is registered later.
 const allServices = [...services.filter(s => s.slug !== oralCavityTongue.slug), oralCavityTongue];
 
 const serviceImageOverrides: Record<string, string> = {

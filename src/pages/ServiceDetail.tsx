@@ -23,6 +23,7 @@ import { phone, phoneLink } from '@/lib/constants';
 import type { Go } from '@/lib/constants';
 import { NotFound } from '@/pages/NotFound';
 import { getService, services } from '@/services';
+import { oralCavityTongue } from '@/services/oralCavityTongue';
 
 // Service image overrides
 const serviceImageOverrides: Record<string, string> = {
@@ -831,14 +832,14 @@ export function ServiceDetail({
   slug?: string;
   go: Go;
 }) {
-  const service = getService(slug);
+  const service = slug === oralCavityTongue.slug ? oralCavityTongue : getService(slug);
   const revealRef = useScrollReveal(service?.slug);
 
   if (!service) {
     return <NotFound go={go} />;
   }
 
-  const otherServices = services.filter(item => item.slug !== service.slug);
+  const otherServices = [...services.filter(item => item.slug !== oralCavityTongue.slug), oralCavityTongue].filter(item => item.slug !== service.slug);
 
   return (
     <>
